@@ -1,1 +1,1 @@
-web: gunicorn showshelf_project.wsgi
+web: gunicorn wsgi
