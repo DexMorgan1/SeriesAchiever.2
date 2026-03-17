@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S/achiever</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky-blue: #0ea5e9;
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            background-image: radial-gradient(var(--glass-border) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        header {
+            position: sticky; top: 0; display: flex; justify-content: space-between;
+            align-items: center; padding: 1rem 2rem; background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); z-index: 100;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--sky-blue); text-decoration: none; }
+        .nav-pill {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            padding: 8px 16px; border-radius: 50px; color: white; text-decoration: none;
+            font-weight: 600; transition: all 0.3s ease;
+        }
+        .nav-pill:hover { background: var(--sky-blue); box-shadow: 0 0 15px rgba(14, 165, 233, 0.5); }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">S/achiever</a>
+        <nav>
+            <a href="/" class="nav-pill">Home</a>
+            <a href="/add/" class="nav-pill">Add Show</a>
+            {% if user.is_superuser %}
+                <a href="/admin/" class="nav-pill" style="background: #ef4444;">Admin Vault</a>
+            {% endif %}
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
